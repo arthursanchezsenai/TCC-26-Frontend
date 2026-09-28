@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PartituraPro — Crie e Compartilhe Música</title>
+  <link rel="stylesheet" href="/front/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== LOADER ===== -->
+  <div class="loader" id="loader">
+    <div class="loader__symbol">𝄞</div>
+    <p class="loader__text">Afinando os instrumentos…</p>
+  </div>
+
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#inicio" class="logo">
+        <span class="logo__clef">𝄞</span>
+        <span class="logo__name">Partitura</span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#explorar" class="nav__link">Explorar</a>
+        <a href="#criar" class="nav__link">Criar</a>
+        <a href="#sobre" class="nav__link">Sobre</a>
+        <a href="#contato" class="nav__link">Contato</a>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn btn--ghost" id="btnLogin">Entrar</button>
+        <button class="btn btn--primary" id="btnCadastro">Cadastrar</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero__bg">
+      <div class="hero__staff">
+        <div class="staff__line"></div>
+        <div class="staff__line"></div>
+        <div class="staff__line"></div>
+        <div class="staff__line"></div>
+        <div class="staff__line"></div>
+      </div>
+      <div class="hero__notes" id="heroNotes"></div>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__label">Partitura PRO!</p>
+      <h1 class="hero__title">
+        Transforme suas<br />
+        <em>melodias</em> em<br />
+        partituras reais
+      </h1>
+      <p class="hero__desc">
+        Crie, edite e publique suas partituras musicais com ferramentas profissionais.
+        Compartilhe sua arte com músicos do mundo inteiro.
+      </p>
+      <div class="hero__ctas">
+        <button class="btn btn--large btn--primary" id="btnCriarHero">
+          Criar Partitura
+          <span class="btn__icon">→</span>
+        </button>
+        <button class="btn btn--large btn--ghost" id="btnExplorarHero">
+          Ver Acervo
+        </button>
+      </div>
+      <div class="hero__stats">
+        <div class="stat">
+          <span class="stat__number" data-target="12847">0</span>
+          <span class="stat__label">Partituras publicadas</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number" data-target="3420">0</span>
+          <span class="stat__label">Músicos ativos</span>
+        </div>
+        <div class="stat">
+          <span class="stat__number" data-target="98">0</span>
+          <span class="stat__label">Países alcançados</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPLORAR / ACERVO ===== -->
+  <section class="section section--dark" id="explorar">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__label">Acervo</p>
+        <h2 class="section__title">Partituras em destaque</h2>
+        <p class="section__desc">Descubra obras criadas pela comunidade — do barroco ao jazz contemporâneo.</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filtros" id="filtros">
+        <button class="filtro filtro--active" data-genre="todos">Todos</button>
+        <button class="filtro" data-genre="classico">Clássico</button>
+        <button class="filtro" data-genre="jazz">Jazz</button>
+        <button class="filtro" data-genre="popular">Popular</button>
+        <button class="filtro" data-genre="contemporaneo">Contemporâneo</button>
+        <button class="filtro" data-genre="mpb">MPB</button>
+      </div>
+
+      <!-- Grid de partituras -->
+      <div class="cards-grid" id="cardsGrid">
+        <!-- Gerado via JS -->
+      </div>
+
+      <div class="section__footer">
+        <button class="btn btn--ghost btn--large" id="btnVerMais">Ver mais partituras</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDITOR ===== -->
+  <section class="section section--light" id="criar">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__label">Editor</p>
+        <h2 class="section__title">Crie sua partitura</h2>
+        <p class="section__desc">Uma interface intuitiva para compor diretamente no navegador.</p>
+      </div>
+
+      <div class="editor-wrapper">
+        <!-- Toolbar -->
+        <div class="editor-toolbar">
+          <div class="toolbar-group">
+            <span class="toolbar-label">Clave</span>
+            <button class="tool-btn active" data-tool="clave-sol" title="Clave de Sol">𝄞</button>
+            <button class="tool-btn" data-tool="clave-fa" title="Clave de Fá">𝄢</button>
+          </div>
+          <div class="toolbar-group">
+            <span class="toolbar-label">Notas</span>
+            <button class="tool-btn" data-tool="semibreve" title="Semibreve">𝅝</button>
+            <button class="tool-btn" data-tool="minima" title="Mínima">𝅗𝅥</button>
+            <button class="tool-btn" data-tool="seminima" title="Semínima">♩</button>
+            <button class="tool-btn" data-tool="colcheia" title="Colcheia">♪</button>
+          </div>
+          <div class="toolbar-group">
+            <span class="toolbar-label">Acidentes</span>
+            <button class="tool-btn" data-tool="sustenido" title="Sustenido">♯</button>
+            <button class="tool-btn" data-tool="bemol" title="Bemol">♭</button>
+            <button class="tool-btn" data-tool="natural" title="Bequadro">♮</button>
+          </div>
+          <div class="toolbar-group">
+            <span class="toolbar-label">Pausa</span>
+            <button class="tool-btn" data-tool="pausa" title="Pausa">𝄽</button>
+          </div>
+          <div class="toolbar-group toolbar-group--right">
+            <button class="tool-btn tool-btn--action" id="btnDesfazer" title="Desfazer">↩</button>
+            <button class="tool-btn tool-btn--action" id="btnLimpar" title="Limpar">✕</button>
+          </div>
+        </div>
+
+        <!-- Pentagrama / Canvas -->
+        <div class="staff-editor">
+          <div class="staff-info">
+            <div class="staff-meta">
+              <input class="staff-input" id="tituloPartitura" type="text" placeholder="Título da partitura…" />
+              <input class="staff-input staff-input--sm" id="compositorPartitura" type="text" placeholder="Compositor…" />
+            </div>
+            <select class="staff-select" id="tonalidade" title="Tom / Tonalidade">
+              <option value="">Tom / Tonalidade</option>
+              <option>Dó maior</option>
+              <option>Sol maior</option>
+              <option>Ré maior</option>
+              <option>Lá maior</option>
+              <option>Mi maior</option>
+              <option>Fá maior</option>
+              <option>Si♭ maior</option>
+              <option>Mi♭ maior</option>
+              <option>Lá menor</option>
+              <option>Mi menor</option>
+              <option>Ré menor</option>
+            </select>
+          </div>
+
+          <canvas class="staff-canvas" id="staffCanvas"></canvas>
+
+          <div class="staff-instructions">
+            <span>🎵 Selecione uma nota na barra de ferramentas e clique no pentagrama para inserir</span>
+          </div>
+        </div>
+
+        <!-- Ações do editor -->
+        <div class="editor-actions">
+          <button class="btn btn--ghost" id="btnPreview">Pré-visualizar</button>
+          <button class="btn btn--ghost" id="btnExportar">Exportar PDF</button>
+          <button class="btn btn--primary" id="btnPublicar">Publicar Partitura</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMO FUNCIONA ===== -->
+  <section class="section section--dark" id="como-funciona">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__label">Processo</p>
+        <h2 class="section__title">Como funciona</h2>
+        <p class="section__desc">A partir de uma ideia musical, você transforma sua composição em uma obra organizada, compartilhável e pronta para receber colaboração.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">01</div>
+          <div class="step__icon">🎼</div>
+          <h3 class="step__title">Crie</h3>
+          <p class="step__desc">Use nosso editor visual para compor notas, acordes e arranjos diretamente no navegador.</p>
+        </div>
+        <div class="step__arrow">→</div>
+        <div class="step">
+          <div class="step__number">02</div>
+          <div class="step__icon">✏️</div>
+          <h3 class="step__title">Edite</h3>
+          <p class="step__desc">Ajuste dinâmicas, articulações, andamento e todos os detalhes da sua composição.</p>
+        </div>
+        <div class="step__arrow">→</div>
+        <div class="step">
+          <div class="step__number">03</div>
+          <div class="step__icon">🌍</div>
+          <h3 class="step__title">Publique</h3>
+          <p class="step__desc">Compartilhe com a comunidade, receba feedbacks e conecte-se com outros músicos.</p>
+        </div>
+      </div>
+
+      <div class="process-details">
+        <div class="process-pill">
+          <span>⚡</span>
+          <p>Criação rápida e visual</p>
+        </div>
+        <div class="process-pill">
+          <span>🎵</span>
+          <p>Feedback musical em tempo real</p>
+        </div>
+        <div class="process-pill">
+          <span>📦</span>
+          <p>Publicação em um só clique</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section class="section section--accent" id="sobre">
+    <div class="container container--split">
+      <div class="about-text">
+        <p class="section__label">Sobre o projeto</p>
+        <h2 class="section__title">Música é linguagem universal</h2>
+        <p class="about__p">
+          O <strong>Partitura</strong> nasceu da necessidade de democratizar o acesso à notação musical.
+          Muitos músicos talentosos não têm acesso a softwares caros ou complexos para registrar suas criações.
+        </p>
+        <p class="about__p">
+          Nossa plataforma oferece ferramentas profissionais de forma gratuita e acessível,
+          conectando compositores iniciantes e experientes em uma comunidade vibrante.
+        </p>
+        <div class="about-tags">
+          <span class="tag">Gratuito</span>
+          <span class="tag">Open Source</span>
+          <span class="tag">Comunidade</span>
+          <span class="tag">Acessível</span>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="score-preview">
+          <div class="score-preview__inner">
+            <div class="score-clef">𝄞</div>
+            <div class="score-staff">
+              <div class="score-line"></div>
+              <div class="score-line"></div>
+              <div class="score-line"></div>
+              <div class="score-line"></div>
+              <div class="score-line"></div>
+            </div>
+            <div class="score-notes-display" id="scoreNotesDisplay"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section class="section section--dark" id="contato">
+    <div class="container container--wide">
+      <div class="section__header">
+        <p class="section__label">Contato</p>
+        <h2 class="section__title">Fale conosco</h2>
+        <p class="section__desc">Sugestões, parcerias ou dúvidas? Adoramos ouvir músicos e entender como a plataforma pode crescer com a comunidade.</p>
+      </div>
+
+      <div class="contact-layout">
+        <aside class="contact-panel">
+          <h3>Vamos conversar</h3>
+          <p class="contact-panel__text">Quer propor uma ideia, falar sobre colaboração ou relatar algo importante para melhorar a experiência?</p>
+
+          <div class="contact-item">
+            <span class="contact-item__icon">✉️</span>
+            <div>
+              <label>E-mail</label>
+              <a href="mailto:contato@partiturapro.com">contato@partiturapro.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-item__icon">📍</span>
+            <div>
+              <label>Local</label>
+              <p>Brasil • Comunidade de músicos e estudantes</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-item__icon">⏰</span>
+            <div>
+              <label>Atendimento</label>
+              <p>Segunda a sexta, das 9h às 18h</p>
+            </div>
+          </div>
+        </aside>
+
+        <div class="form-card">
+          <div class="form-group">
+            <label class="form-label" for="nome">Nome</label>
+            <input class="form-input" id="nome" type="text" placeholder="Seu nome completo" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-input" id="email" type="email" placeholder="seu@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="assunto">Assunto</label>
+            <select class="form-input" id="assunto">
+              <option value="">Selecione um assunto</option>
+              <option>Sugestão de funcionalidade</option>
+              <option>Parceria</option>
+              <option>Reportar problema</option>
+              <option>Outro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="mensagem">Mensagem</label>
+            <textarea class="form-input form-textarea" id="mensagem" placeholder="Escreva sua mensagem…"></textarea>
+          </div>
+          <button class="btn btn--primary btn--large btn--full" id="btnEnviar">Enviar mensagem</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INFORMAÇÕES ===== -->
+  <section class="section section--dark" id="informacoes">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__label">Recursos</p>
+        <h2 class="section__title">Uma plataforma pensada para músicos</h2>
+        <p class="section__desc">Tudo o que você precisa para transformar ideias em melodias, arranjos e músicas prontas para compartilhar.</p>
+      </div>
+
+      <div class="info-grid">
+        <article class="info-card">
+          <div class="info-card__icon">🎹</div>
+          <h3>Composição intuitiva</h3>
+          <p>Crie partituras com uma interface simples, rápida e visualmente organizada para facilitar a criação musical.</p>
+        </article>
+        <article class="info-card">
+          <div class="info-card__icon">📚</div>
+          <h3>Biblioteca de referências</h3>
+          <p>Explore composições por gênero e estilo, inspirando-se em obras clássicas, jazz, MPB e criativas contemporâneas.</p>
+        </article>
+        <article class="info-card">
+          <div class="info-card__icon">🤝</div>
+          <h3>Comunidade ativa</h3>
+          <p>Publique suas criações, receba feedbacks e conecte-se com outros artistas que compartilham a mesma paixão pela música.</p>
+        </article>
+      </div>
+
+      <div class="feedback-shell">
+        <div class="feedback-copy">
+          <p class="section__label">Feedback</p>
+          <h3 class="feedback-title">Como está sua experiência?</h3>
+          <p>Nos ajude a melhorar a plataforma com sua opinião. Sua resposta ajuda a criar uma ferramenta mais útil para todos os músicos.</p>
+        </div>
+
+        <form class="feedback-card" id="feedbackForm">
+          <div class="rating-stars" aria-label="Avaliação">
+            <button type="button" class="star-btn active" data-value="1" aria-label="1 estrela">★</button>
+            <button type="button" class="star-btn active" data-value="2" aria-label="2 estrelas">★</button>
+            <button type="button" class="star-btn active" data-value="3" aria-label="3 estrelas">★</button>
+            <button type="button" class="star-btn" data-value="4" aria-label="4 estrelas">★</button>
+            <button type="button" class="star-btn" data-value="5" aria-label="5 estrelas">★</button>
+          </div>
+          <textarea class="feedback-input" id="feedbackMensagem" maxlength="250" placeholder="Conte-nos o que você acha da plataforma…"></textarea>
+          <button type="submit" class="btn btn--primary btn--large btn--full" id="feedbackSubmit">Enviar feedback</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="#inicio" class="logo">
+            <span class="logo__clef">𝄞</span>
+            <span class="logo__name">Partitura</span>
+          </a>
+          <p class="footer__tagline">Onde a música encontra a linguagem.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>Plataforma</h4>
+            <a href="#criar">Editor</a>
+            <a href="#explorar">Acervo</a>
+            <a href="#como-funciona">Como funciona</a>
+          </div>
+          <div class="footer__col">
+            <h4>Recursos</h4>
+            <a href="#informacoes">Recursos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+          </div>
+          <div class="footer__col">
+            <h4>Projeto</h4>
+            <a href="#sobre">História</a>
+            <a href="#contato">Fale conosco</a>
+            <a href="#inicio">Início</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 PartituraPro — Trabalho de Conclusão de Curso</p>
+        <div class="footer__music">𝄞 𝄢 ♩ ♪ ♫</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MODAIS ===== -->
+  <div class="modal" id="modalPublicar">
+    <div class="modal__overlay" id="modalOverlay"></div>
+    <div class="modal__box">
+      <button class="modal__close" id="modalClose">✕</button>
+      <h3 class="modal__title">Publicar Partitura</h3>
+      <div class="form-group">
+        <label class="form-label" for="generoPublicar">Gênero</label>
+        <select class="form-input" id="generoPublicar">
+          <option>Clássico</option>
+          <option>Jazz</option>
+          <option>Popular</option>
+          <option>Contemporâneo</option>
+          <option>MPB</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descrição</label>
+        <textarea class="form-input form-textarea" placeholder="Fale um pouco sobre sua composição…"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Visibilidade</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="vis" value="publica" checked /> Pública</label>
+          <label class="radio-label"><input type="radio" name="vis" value="privada" /> Privada</label>
+        </div>
+      </div>
+      <button class="btn btn--primary btn--full" id="btnConfirmarPublicar">Confirmar publicação</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modalAuth">
+    <div class="modal__overlay" id="authModalOverlay"></div>
+    <div class="modal__box auth-modal__box">
+      <button class="modal__close" id="authModalClose" type="button" aria-label="Fechar">✕</button>
+      <p class="section__label" id="authModalLabel">Acesso</p>
+      <h3 class="modal__title" id="authModalTitle">Entrar na sua conta</h3>
+      <p class="auth-modal__message" id="authModalMessage">Acesse suas partituras e continue criando.</p>
+      <form id="authForm" class="auth-form">
+        <div class="form-group" id="authNameGroup" hidden>
+          <label class="form-label" for="authName">Nome</label>
+          <input class="form-input" id="authName" name="nome" type="text" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="authEmail">E-mail</label>
+          <input class="form-input" id="authEmail" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="authPassword">Senha</label>
+          <input class="form-input" id="authPassword" name="senha" type="password" minlength="6" autocomplete="current-password" required />
+        </div>
+        <p class="auth-form__error" id="authError" role="alert"></p>
+        <button class="btn btn--primary btn--full" id="authSubmit" type="submit">Entrar</button>
+      </form>
+      <button class="auth-modal__switch" id="authSwitch" type="button">Ainda não tenho uma conta</button>
+    </div>
+  </div>
+
+  <!-- Toast de notificação -->
+  <div class="toast" id="toast"></div>
+
+  <script src="/front/js/script.js"></script>
+</body>
+</html>
