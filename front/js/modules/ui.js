@@ -1,10 +1,17 @@
 import { $, $$ } from './dom.js';
 
 export function initializeLoader() {
-  window.addEventListener('load', () => {
+  const hideLoader = () => {
     const loader = $('#loader');
     setTimeout(() => loader?.classList.add('hidden'), 1200);
-  });
+  };
+
+  if (document.readyState === 'complete') {
+    hideLoader();
+  } else {
+    window.addEventListener('load', hideLoader, { once: true });
+    window.setTimeout(hideLoader, 3000);
+  }
 }
 
 export function initializeNavigation() {
@@ -29,7 +36,6 @@ export function initializeNavigation() {
     });
   });
 }
-
 export function initializeHeroNotes() {
   const heroNotes = $('#heroNotes');
   if (!heroNotes) return;
@@ -50,7 +56,6 @@ export function initializeHeroNotes() {
     setTimeout(() => el.remove(), (duration + delay) * 1000 + 200);
   }, 700);
 }
-
 export function initializeStats() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -77,7 +82,6 @@ export function initializeStats() {
 
   $$('.stat__number').forEach((el) => observer.observe(el));
 }
-
 let toastTimer;
 export function showToast(message, isError = false) {
   const toast = $('#toast');
@@ -88,7 +92,6 @@ export function showToast(message, isError = false) {
   toast.classList.add('show');
   toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
 }
-
 export function initializeUI() {
   initializeLoader();
   initializeNavigation();
