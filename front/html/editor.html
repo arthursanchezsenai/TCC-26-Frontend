@@ -1,0 +1,103 @@
+<!-- ===== EDITOR ===== -->
+  <section class="section section--light" id="criar">
+    <div class="container">
+      <div class="section__header">
+        <p class="section__label">Editor</p>
+        <h2 class="section__title">Crie sua partitura</h2>
+        <p class="section__desc">Uma interface intuitiva para compor diretamente no navegador.</p>
+      </div>
+
+      <div class="editor-wrapper">
+        <!-- Toolbar -->
+        <div class="editor-toolbar">
+          <div class="toolbar-group">
+            <span class="toolbar-label">Clave</span>
+            <button class="tool-btn active" data-clef="sol" title="Clave de Sol" aria-label="Clave de Sol">𝄞</button>
+            <button class="tool-btn" data-clef="fa" title="Clave de Fá" aria-label="Clave de Fá">𝄢</button>
+            <button class="tool-btn" data-clef="do" title="Clave de Dó (Alto)" aria-label="Clave de Dó">𝄡</button>
+          </div>
+          <div class="toolbar-group">
+            <span class="toolbar-label">Notas</span>
+            <button class="tool-btn" data-tool="semibreve" title="Semibreve">𝅝</button>
+            <button class="tool-btn" data-tool="minima" title="Mínima">𝅗𝅥</button>
+            <button class="tool-btn" data-tool="seminima" title="Semínima">♩</button>
+            <button class="tool-btn" data-tool="colcheia" title="Colcheia">♪</button>
+          </div>
+          <div class="toolbar-group">
+            <span class="toolbar-label">Acidentes</span>
+            <button class="tool-btn" data-tool="sustenido" title="Sustenido">♯</button>
+            <button class="tool-btn" data-tool="bemol" title="Bemol">♭</button>
+            <button class="tool-btn" data-tool="natural" title="Bequadro">♮</button>
+          </div>
+          <div class="toolbar-group">
+            <span class="toolbar-label">Pausa</span>
+            <button class="tool-btn" data-tool="pausa" title="Pausa">𝄽</button>
+          </div>
+          <div class="toolbar-group toolbar-group--right">
+            <button class="tool-btn tool-btn--action" id="btnDesfazer" title="Desfazer">↩</button>
+            <button class="tool-btn tool-btn--action" id="btnLimpar" title="Limpar">✕</button>
+          </div>
+        </div>
+
+        <!-- Pentagrama / Canvas -->
+        <div class="staff-editor">
+          <div class="staff-info">
+            <div class="staff-meta">
+              <input class="staff-input" id="tituloPartitura" type="text" placeholder="Título da partitura…" />
+              <input class="staff-input staff-input--sm" id="compositorPartitura" type="text" placeholder="Compositor…" />
+            </div>
+            <select class="staff-select" id="tonalidade" title="Tom / Tonalidade">
+              <option value="">Tom / Tonalidade</option>
+              <option>Dó maior</option>
+              <option>Sol maior</option>
+              <option>Ré maior</option>
+              <option>Lá maior</option>
+              <option>Mi maior</option>
+              <option>Fá maior</option>
+              <option>Si♭ maior</option>
+              <option>Mi♭ maior</option>
+              <option>Lá menor</option>
+              <option>Mi menor</option>
+              <option>Ré menor</option>
+            </select>
+          </div>
+
+          <div class="staff-canvas-wrap" id="staffCanvasWrap">
+            <canvas class="staff-canvas" id="staffCanvas"></canvas>
+            <div class="staff-playback-cursor" id="staffPlaybackCursor" aria-hidden="true"></div>
+          </div>
+
+          <div class="playback-panel" id="playbackPanel">
+            <label class="playback-control" for="compassoSelect">
+              Compasso
+              <select id="compassoSelect">
+                <option value="2/4">2/4</option>
+                <option value="3/4">3/4</option>
+                <option value="4/4" selected>4/4</option>
+                <option value="6/8">6/8</option>
+              </select>
+            </label>
+            <span class="playback-counter" id="contadorTempoLabel" aria-live="polite"></span>
+            <label class="playback-control playback-control--tempo" for="bpmRange">
+              Andamento <span><output id="bpmLabel">100</output> BPM</span>
+              <input id="bpmRange" type="range" min="40" max="200" value="100">
+            </label>
+            <output class="playback-time" id="playbackTime" aria-live="off">00:00 / 00:00</output>
+            <button class="btn btn--primary playback-button" id="btnOuvir" type="button">▶ Ouvir partitura</button>
+            <button class="btn btn--ghost playback-button" id="btnPararSom" type="button">■ Parar</button>
+          </div>
+
+          <div class="staff-instructions">
+            <span>🎵 Selecione uma nota na barra de ferramentas e clique no pentagrama para inserir</span>
+          </div>
+        </div>
+
+        <!-- Ações do editor -->
+        <div class="editor-actions">
+          <button class="btn btn--ghost" id="btnPreview">Pré-visualizar</button>
+          <button class="btn btn--ghost" id="btnExportar">Exportar PDF</button>
+          <button class="btn btn--primary" id="btnPublicar">Publicar Partitura</button>
+        </div>
+      </div>
+    </div>
+  </section>

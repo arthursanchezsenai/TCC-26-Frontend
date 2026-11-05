@@ -1,0 +1,60 @@
+<!-- ===== MODAIS ===== -->
+  <div class="modal" id="modalPublicar">
+    <div class="modal__overlay" id="modalOverlay"></div>
+    <div class="modal__box">
+      <button class="modal__close" id="modalClose">✕</button>
+      <h3 class="modal__title">Publicar Partitura</h3>
+      <div class="form-group">
+        <label class="form-label" for="generoPublicar">Gênero</label>
+        <select class="form-input" id="generoPublicar">
+          <option>Clássico</option>
+          <option>Jazz</option>
+          <option>Popular</option>
+          <option>Contemporâneo</option>
+          <option>MPB</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Descrição</label>
+        <textarea class="form-input form-textarea" placeholder="Fale um pouco sobre sua composição…"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Visibilidade</label>
+        <div class="radio-group">
+          <label class="radio-label"><input type="radio" name="vis" value="publica" checked /> Pública</label>
+          <label class="radio-label"><input type="radio" name="vis" value="privada" /> Privada</label>
+        </div>
+      </div>
+      <button class="btn btn--primary btn--full" id="btnConfirmarPublicar">Confirmar publicação</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modalAuth">
+    <div class="modal__overlay" id="authModalOverlay"></div>
+    <div class="modal__box auth-modal__box">
+      <button class="modal__close" id="authModalClose" type="button" aria-label="Fechar">✕</button>
+      <p class="section__label" id="authModalLabel">Acesso</p>
+      <h3 class="modal__title" id="authModalTitle">Entrar na sua conta</h3>
+      <p class="auth-modal__message" id="authModalMessage">Acesse suas partituras e continue criando.</p>
+      <form id="authForm" class="auth-form">
+        <div class="form-group" id="authNameGroup" hidden>
+          <label class="form-label" for="authName">Nome</label>
+          <input class="form-input" id="authName" name="nome" type="text" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="authEmail">E-mail</label>
+          <input class="form-input" id="authEmail" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="authPassword">Senha</label>
+          <input class="form-input" id="authPassword" name="senha" type="password" minlength="6" autocomplete="current-password" required />
+        </div>
+        <p class="auth-form__error" id="authError" role="alert"></p>
+        <button class="btn btn--primary btn--full" id="authSubmit" type="submit">Entrar</button>
+      </form>
+      <button class="auth-modal__switch" id="authSwitch" type="button">Ainda não tenho uma conta</button>
+    </div>
+  </div>
+
+  <!-- Toast de notificação -->
+  <div class="toast" id="toast"></div>

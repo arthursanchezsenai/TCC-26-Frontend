@@ -1,0 +1,76 @@
+/* ============================================================
+   SOBRE
+   ============================================================ */
+.about__p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+  line-height: 1.8;
+}
+
+.about__p strong { color: var(--gold); }
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35em 0.9em;
+  border: 1px solid var(--gold);
+  border-radius: 100px;
+  color: var(--gold);
+}
+
+/* Score preview visual */
+.score-preview {
+  background: #faf8f2;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+
+.score-preview__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.score-clef {
+  font-size: 5rem;
+  color: var(--text-dark);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.score-staff {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.score-line {
+  height: 1px;
+  background: var(--text-dark);
+  opacity: 0.5;
+}
+
+.score-notes-display {
+  position: absolute;
+  left: 80px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  overflow: hidden;
+}

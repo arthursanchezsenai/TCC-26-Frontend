@@ -1,0 +1,120 @@
+/* ============================================================
+   INFORMAÇÕES / FEEDBACK
+   ============================================================ */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+
+.info-card__icon {
+  font-size: 2.2rem;
+  margin-bottom: var(--space-md);
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  color: var(--text);
+  margin-bottom: var(--space-sm);
+}
+
+.info-card p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.feedback-shell {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr;
+  gap: var(--space-xl);
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.feedback-copy {
+  max-width: 520px;
+}
+
+.feedback-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: var(--text);
+  margin-bottom: var(--space-md);
+}
+
+.feedback-copy p:last-child {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+}
+
+.feedback-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.rating-stars {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.star-btn {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--border-card);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all var(--dur) var(--ease);
+}
+
+.star-btn:hover,
+.star-btn.active {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.feedback-input {
+  background: var(--bg);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  min-height: 120px;
+  resize: vertical;
+  padding: 0.9rem 1rem;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+}
+
+.feedback-input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.12);
+}

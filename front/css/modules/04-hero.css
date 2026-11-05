@@ -1,0 +1,138 @@
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 100px var(--space-lg) var(--space-2xl);
+}
+
+/* Fundo com linhas de pentagrama */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__staff {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  opacity: 0.06;
+}
+
+.staff__line {
+  height: 1px;
+  background: var(--text);
+  width: 100%;
+}
+
+.hero__notes {
+  position: absolute;
+  inset: 0;
+}
+
+.floating-note {
+  position: absolute;
+  font-size: 2rem;
+  color: var(--gold);
+  opacity: 0;
+  animation: floatNote linear infinite;
+}
+
+@keyframes floatNote {
+  0%   { opacity: 0; transform: translateY(20px); }
+  10%  { opacity: 0.4; }
+  90%  { opacity: 0.4; }
+  100% { opacity: 0; transform: translateY(-100px); }
+}
+
+.hero__content {
+  position: relative;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.hero__label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s var(--ease) forwards;
+}
+
+.hero__title {
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--text);
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  animation: fadeUp 0.8s 0.5s var(--ease) forwards;
+}
+
+.hero__title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero__desc {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-bottom: var(--space-xl);
+  opacity: 0;
+  animation: fadeUp 0.8s 0.7s var(--ease) forwards;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2xl);
+  opacity: 0;
+  animation: fadeUp 0.8s 0.9s var(--ease) forwards;
+}
+
+.hero__stats {
+  display: flex;
+  gap: var(--space-xl);
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.1s var(--ease) forwards;
+}
+
+.stat__number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

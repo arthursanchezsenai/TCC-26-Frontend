@@ -1,0 +1,125 @@
+/* ============================================================
+   CARDS DE PARTITURA
+   ============================================================ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease), border-color var(--dur);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardIn 0.5s var(--ease) forwards;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  border-color: var(--border);
+}
+
+.card__thumb {
+  height: 140px;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card__thumb-staff {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: 0 16px;
+  opacity: 0.15;
+}
+
+.card__thumb-staff span {
+  display: block;
+  height: 1px;
+  background: var(--text);
+}
+
+.card__clef {
+  font-size: 4rem;
+  color: var(--gold);
+  opacity: 0.6;
+  position: relative;
+  z-index: 1;
+  transition: opacity var(--dur), transform var(--dur);
+}
+
+.card:hover .card__clef {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.card__body {
+  padding: var(--space-md);
+}
+
+.card__genre {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-xs);
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: var(--space-xs);
+}
+
+.card__composer {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--border-card);
+}
+
+.card__likes {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.card__dl-btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--dur);
+}
+
+.card__dl-btn:hover { color: var(--gold-light); }
+
+@keyframes cardIn {
+  to { opacity: 1; transform: translateY(0); }
+}
